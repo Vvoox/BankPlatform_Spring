@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>AKINOBANK</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">COnsultation d'un compte</div>
+            <div class="panel-body">
+                <form th:action="@{/consulterCompte}" method="get">
+                    <div>
+                        <label>Code Compte : </label>
+                        <input type="text" name="codeCompte">
+                        <button type="submit" class="btn btn-primary">Rechercher</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-primary" th:if="${compte}">
+            <div class="panel-heading">Information sur le compte</div>
+            <div class="panel-body">
+                <div>
+                <label>Code : </label>
+                <label th:text="${compte.codeCompte}"></label>
+                </div>
+                <div>
+                <label>Date creation : </label>
+                <label th:text="${compte.dateCreation}"></label>
+                </div>
+                <div>
+                <label>Solde : </label>
+                <label th:text="${compte.solde}"></label>
+                </div>
+                <div>
+                <label>Decouvert : </label>
+                <label th:text="${compte.decouvert}"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6"  th:if="${compte}">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Operations sur le compte</div>
+            <div class="panel-body"></div>
+        </div>
+        <div class="panel panel-primary" th:if="${compte}">
+            <div class="panel-heading">liste des operations</div>
+            <div class="panel-body"></div>
+        </div>
+    </div>
+
+
+</section>
+</body>
+</html>

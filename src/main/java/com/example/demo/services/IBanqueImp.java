@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -24,10 +25,13 @@ public class IBanqueImp implements IBanqueService {
 
     @Override
     public Compte consulterCompte(String codeCpte) {
-        Compte cp = compteRepository.getOne(codeCpte);
-        if(cp==null) throw  new RuntimeException("Compte introuvable");
+
+        Compte cp = compteRepository.findById(codeCpte);
+        if(cp==null) throw new RuntimeException("Compte introuvable");
+
         return cp;
     }
+
 
     @Override
     public void verser(String codeCpte, double montant) {

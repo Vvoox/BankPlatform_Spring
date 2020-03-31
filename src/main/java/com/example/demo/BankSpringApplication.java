@@ -49,7 +49,7 @@ public class BankSpringApplication implements CommandLineRunner {
         Operation op2 = operationRepository.save(new Versement(new Date() , 1000 , compte2));
         Operation op3 = operationRepository.save(new Retrait(new Date() , 5000 , compte1));
 
-        iBanqueService.verser("code1",1111111);
+//        iBanqueService.verser("code1",1111111);
         clientRepository.findAll().forEach(client -> System.out.println(client.getCode()+" "+client.getNom()+" "+client.getEmail()));
     }
 }
